@@ -13,16 +13,15 @@ public class Quotation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long quotationNo;   // Auto-generated quotation number
+    private Long id;
 
-    @Column(nullable = false)
     private String customerName;
-
-    @Column(nullable = false)
     private String contactNo;
+    private String category;
 
     // One quotation can have many products
-    @OneToMany(mappedBy = "quotation", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "quotation_id")
     private List<QuotationProduct> products;
 }
 

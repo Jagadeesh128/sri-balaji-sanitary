@@ -11,25 +11,17 @@ import lombok.*;
 @AllArgsConstructor
 public class QuotationProduct {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long serialNo;   // Serial number for each product line
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
 
-    @Column(nullable = false)
-    private String productId;
+        private String productId;
+        private String productName;
+        private double mrp;
+        private String make;
+        private double discount;
+        private int quantity;
+        private double finalPrice;
+    }
 
-    @Column(nullable = false)
-    private String productName;
 
-    private String make;
-
-    @Column(nullable = false)
-    private int quantity;
-    @Column(nullable = false)
-    private double price;
-
-    // Link back to the quotation
-    @ManyToOne
-    @JoinColumn(name = "quotation_no")
-    private Quotation quotation;
-}
