@@ -8,7 +8,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/inventory")
-@CrossOrigin(origins = "http://localhost:3000")  // allow React dev server
+@CrossOrigin(origins = {
+        "http://localhost:3000",
+        "http://192.168.0.111:3000"
+})
 public class InventoryController {
     private final StockInventoryService service;
 
