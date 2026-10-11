@@ -1,7 +1,9 @@
 package com.sribalajisanitary.invoicingsystem.model;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -18,6 +20,7 @@ public class Quotation {
     private String customerName;
     private String contactNo;
     private String category;
+    private Date createdAt;
 
     // One quotation can have many products
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

@@ -8,6 +8,8 @@ import com.sribalajisanitary.invoicingsystem.repository.QuotationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/quotations")
 @CrossOrigin(origins = {
@@ -22,5 +24,23 @@ public class QuotationsController {
     public Quotation createQuotation(@RequestBody Quotation quotation) {
         return quotationsService.saveQuotation(quotation);
     }
+
+    @GetMapping
+    public List<Quotation> getAllQuotations() {
+        return quotationsService.fetchQuotations();
+    }
+
+    @GetMapping("/{id}")
+    public Quotation getQuotation(@PathVariable String id) {
+        Long quotationId = Long.parseLong(id);
+        return quotationsService.fetchQuotation(quotationId);
+    }
+
+    @PutMapping("/{id}")
+    public Quotation updateQuotation(@RequestBody Quotation quotation, @PathVariable String id) {
+        Long quotationId = Long.parseLong(id);
+        return quotationsService.updateQuotation(quotationId,quotation);
+    }
+
 
 }
